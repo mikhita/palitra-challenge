@@ -1,11 +1,8 @@
 import axios from 'axios'
-
-type Params = {
-   
-  };
+import {Post} from '../types';
 
 type GetPostsResponse = {
-  data: Params[];
+  data: Post[];
 };
 
 export async function getPosts() {
@@ -19,11 +16,11 @@ export async function getPosts() {
           },
         },
       );
-  
       // console.log(JSON.stringify(data, null, 4));
   
       // 👇️ "response status is: 200"
       console.log('response status is: ', status);
+      // console.log("Data from axios: ", data, " type of ", typeof data);
   
       return data;
     } catch (error) {
