@@ -13,12 +13,11 @@ const App = () => {
   return (
     <div>
         <ul>
-          <li><Link to='/'>Home</Link></li>
+          <li><Link to='/'>Posts</Link></li>
           <li><Link to='/topics'>Topics</Link></li>
           <li><Link to='/settings'>Settings</Link></li>
-        </ul>
-        <hr />
-        <Main />          
+        </ul>   
+        <Main/>       
     </div>
   );
 };

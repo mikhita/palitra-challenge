@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import Paginate from 'react-paginate';
 import { getPosts } from '../API/posts'; 
-import { Post } from '../types';
+import { Post, User } from '../types';
+import { getUsers } from '../API/users';
 
 
-const Home = () => {
+
+const Posts = () => {
     const [page, setPage] = useState({
         offset: 0,
         limit: 20,
       });
     
       const [posts, setPosts] = useState<Post[]>([]);
+      const [users, setUsers] = useState<{ [key: number]: User }>({});
+
       const totalItems = posts.length;
     
     
@@ -31,6 +35,27 @@ const Home = () => {
       };
     getData();
       }, []);
+
+      useEffect(() => {
+        async function fetchUsers() {
+          const requests = posts.map((post) =>
+            fetch(`https://jsonplaceholder.typicode.com/users/${post.userId}`).then((res) => res.json())
+          );
+    
+          const users = await Promise.all(requests);
+          const usersById = users.reduce<{ [key: number]: User }>((acc, user) => {
+            acc[user.id] = user;
+            return acc;
+          }, {});
+    
+          setUsers(usersById);
+        }
+    
+        if (posts.length > 0) {
+          fetchUsers();
+        }
+      }, [posts]);
+    
     
       const handlePageClick = (data: any) => {
         setPage({
@@ -43,8 +68,10 @@ const Home = () => {
     return(
      <div> 
         <ul>
-        {paginatedItems.map((item: Post) => (
-          <li key={item.id}>{item.id} - {item.title}</li>
+        {paginatedItems.map((post: Post) => (
+          <li key={post.id}>
+          {post.title} - {users[post.userId]?.name}
+        </li>
         ))}
       </ul>
       <Paginate
@@ -52,7 +79,7 @@ const Home = () => {
         pageRangeDisplayed={5}
         marginPagesDisplayed={2}
         onPageChange={handlePageClick}
-      />     
+      />    
   </div> )  ;
 }
-export default Home;
+export default Posts;
