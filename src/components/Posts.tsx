@@ -3,6 +3,7 @@ import Paginate from 'react-paginate';
 import { getPosts } from '../API/posts'; 
 import { Post, User } from '../types';
 import { getUsers } from '../API/users';
+import { Link } from 'react-router-dom';
 
 
 
@@ -69,9 +70,11 @@ const Posts = () => {
      <div> 
         <ul>
         {paginatedItems.map((post: Post) => (
+          <Link to={`/users/${post.userId}`}>
           <li key={post.id}>
-          {post.title} - {users[post.userId]?.name}
+          {post.title} - {users[post.userId]?.name}{" "}
         </li>
+        </Link>
         ))}
       </ul>
       <Paginate
