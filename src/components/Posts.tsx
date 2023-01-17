@@ -77,7 +77,7 @@ const Posts = () => {
         </Link>
         ))}
       </ul>
-      <Paginate
+      <Paginate className=' flex flex-row gap-4 mt-8 text-lime-800'
         pageCount={Math.ceil(totalItems / page.limit)}
         pageRangeDisplayed={5}
         marginPagesDisplayed={2}
