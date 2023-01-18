@@ -13,7 +13,7 @@ return (
       <Route path='/' element={<Posts/>} />
       <Route path='/topics' element={<Topics/>} />
       <Route path='/settings' element={<Settings/>} />
-      <Route path="/users/:id" element={<PostPage/>} />
+      <Route path="/users/:id" element={<PostPage />} />
     </Routes>
 
   </div>

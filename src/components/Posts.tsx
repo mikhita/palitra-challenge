@@ -70,9 +70,9 @@ const Posts = () => {
      <div> 
         <ul>
         {paginatedItems.map((post) => (
-          <Link to={`/users/${post.userId}`}>
+          <Link to={`/users/${post.id}`}>
             <li key={post.id}>
-              {post.title} - {users[post.userId]?.name}{" "}
+              {users[post.userId]?.name}{" "}
             </li>
         </Link>
         ))}
