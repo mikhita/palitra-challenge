@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Paginate from 'react-paginate';
 import { getPosts } from '../API/posts'; 
 import { Post, User } from '../types';
-import { getUsers } from '../API/users';
+// import { getUsers } from '../API/users';
 import { Link } from 'react-router-dom';
 
 
