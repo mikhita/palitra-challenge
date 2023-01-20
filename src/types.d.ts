@@ -14,7 +14,7 @@ export type Comment = {
 };
 
 export type User = {
-    adress: {
+    address: {
         city: string;
         geo: {
             lat: number;

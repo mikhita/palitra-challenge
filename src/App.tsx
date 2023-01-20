@@ -11,11 +11,9 @@ const App = () => {
   
 
   return (
-    <div>
-        <ul>
-          <li><Link to='/'>Posts</Link></li>
-          <li><Link to='/topics'>Topics</Link></li>
-          <li><Link to='/settings'>Settings</Link></li>
+    <div className=' flex flex-col justify-center align-middle text-center'>
+        <ul className=' flex flex-row justify-center align-middle bg-blue-700 text-fuchsia-50 text-3xl  '>
+          <li><Link className=' border-fuchsia-700 rounded-sm ' to='/'>Posts</Link></li>
         </ul>   
         <Main/>       
     </div>

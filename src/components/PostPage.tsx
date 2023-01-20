@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -39,24 +39,25 @@ import axios from 'axios';
         fetchData();
     }, [params.id]);
      
-      
 
 
   return (
-    <div>
-      <ul>
+    <div className=' bg-amber-300 text-center flex flex-col justify-center align-middle'>
+      <ul className=' bg-amber-300 text-cyan-900 w-3/4 self-center gap-3'>
         <li>
-            <h1>{"post title: "}{post.title}</h1>
-            <p>{"post content: "}{post.body}</p>
+            <h1 className=' text-xl rounded-3xl'>{"post title: "}{post.title}</h1>
+            <p className=' text-sm'>{"post content: "}{post.body}</p>
         </li>
         <li>
-            <h1>{"user name and last name: "}{user.name} </h1>
+        <Link to={`/users/${post.userId}`}>
+            <h1 className=' self-start text-fuchsia-900'>{"user name and last name: "}{user.name} </h1>
+        </Link>
             <h2>{"user email: "}{user.email}</h2>
         </li>
         <li>
         {loading ?  <p>Loading...</p> : (
           comments.map((comment: any) => (
-            <p key={comment.id}>{"comment:  "}{comment.body}</p>
+            <p className={` text-pink-${Math.floor(Math.random() * 9)*100} p-4 bg-`} key={comment.id}>{`comment: ${comment.id} `}{comment.body}</p>
             ))
         )}
         </li>

@@ -67,17 +67,17 @@ const Posts = () => {
     
       const paginatedItems = posts.slice(page.offset, page.offset + page.limit);
     return(
-     <div> 
-        <ul>
+     <div > 
+        <ul className=' text-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500'>
         {paginatedItems.map((post) => (
-          <Link to={`/users/${post.id}`}>
+          <Link to={`/posts/${post.id}`}>
             <li key={post.id}>
               {users[post.userId]?.name}{" "}
             </li>
         </Link>
         ))}
       </ul>
-      <Paginate className=' flex flex-row gap-4 mt-8 text-lime-800'
+      <Paginate className=' flex flex-row gap-4 text-lime-50 text-center bg-neutral-900 align-middle justify-center'
         pageCount={Math.ceil(totalItems / page.limit)}
         pageRangeDisplayed={5}
         marginPagesDisplayed={2}

@@ -3,6 +3,7 @@ import Posts from './Posts';
 import Topics from './Topics';
 import Settings from './Setting';
 import PostPage from './PostPage';
+import UserPage from './UserPage';
 
 const Main = () => {
 
@@ -13,7 +14,8 @@ return (
       <Route path='/' element={<Posts/>} />
       <Route path='/topics' element={<Topics/>} />
       <Route path='/settings' element={<Settings/>} />
-      <Route path="/users/:id" element={<PostPage />} />
+      <Route path="/posts/:id" element={<PostPage />} />
+      <Route path="/users/:userId" element={<UserPage />} />
     </Routes>
 
   </div>
