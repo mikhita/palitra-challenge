@@ -30,46 +30,48 @@ function UserPage() {
     };
 
   return (
-    <div className=' bg-amber-300 text-center flex flex-col justify-center align-middle'>
-        <ul className=' bg-amber-300 text-cyan-900 w-3/4 self-center gap-3'>
-            <li>
-               {"Name: "} {user.name}
+    <div className=' bg-yellow-500 text-center flex flex-col justify-center align-middle'>
+    <ul className=' bg-gray-800 text-yellow-50 w-3/4 self-center gap-3'>
+        <li>
+           {"Name: "} {user.name}
+        </li>
+        <li>
+           {"Username: "} {user.username}
+        </li>
+        <li>
+           {"email: "} {user.email}
+        </li>
+        <li>
+            {"city: "}{user.address.city}
+        </li>
+        <li>
+            {"Zipcode: "} {user.address.zipcode}
+        </li>
+        <li>
+            {"phone: "} {user.phone}
+        </li>
+        <li>
+            {"website: "} {user.website}
+        </li>
+        <li>
+            {"company name: "} {user.company.name}
+        </li>
+    </ul>
+    <h1>{"user post list: "}</h1>
+    <ul className=' w-3/4 self-center gap-3'>
+        {userPosts.slice(0, postsToDisplay).map((post: any) => (
+            <li className=' p-6' key={post.id}>
+                <div className=' flex flex-col'>
+                    <h2 className=' flex flex-row '>{post.id}{"  "}{post.title}</h2>
+                    <p>{post.body}</p>
+                </div>
             </li>
-            <li>
-               {"Username: "} {user.username}
-            </li>
-            <li>
-               {"email: "} {user.email}
-            </li>
-            <li>
-                {"city: "}{user.address.city}
-            </li>
-            <li>
-                {"Zipcode: "} {user.address.zipcode}
-            </li>
-            <li>
-                {"phone: "} {user.phone}
-            </li>
-            <li>
-                {"website: "} {user.website}
-            </li>
-            <li>
-                {"company name: "} {user.company.name}
-            </li>
-        </ul>
-        <h1>{"user post list: "}</h1>
-        <ul className=' w-3/4 self-center gap-3'>
-            {userPosts.slice(0, postsToDisplay).map((post: any) => (
-                <li className=' p-6' key={post.id}>
-                    <div className=' flex flex-col'>
-                        <h2 className=' flex flex-row '>{post.id}{"  "}{post.title}</h2>
-                        <p>{post.body}</p>
-                    </div>
-                </li>
-            ))}
-        </ul>
-        <button className=' text-fuchsia-600' onClick={handleButtonClick}>{showMore ? 'Show Less' : 'Show More'}</button>
-    </div>
+        ))}
+    </ul>
+    <button className=' text-red-600' onClick={handleButtonClick}>{showMore ? ' Show Less' : ' Show More'}</button>
+</div>
+
+
   )
 }
 

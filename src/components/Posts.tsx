@@ -67,22 +67,22 @@ const Posts = () => {
     
       const paginatedItems = posts.slice(page.offset, page.offset + page.limit);
     return(
-     <div > 
-        <ul className=' text-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500'>
+      <div className='flex flex-col items-center text-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500'>
+      <ul className='w-3/4 text-white font-bold'>
         {paginatedItems.map((post) => (
-          <Link to={`/posts/${post.id}`}>
-            <li key={post.id}>
-              {users[post.userId]?.name}{" "}
+          <Link to={`/posts/${post.id}`} key={post.id}>
+            <li className='p-4 hover:bg-pink-600 hover:text-indigo-100 rounded-full'>
+              {users[post.userId]?.name}
             </li>
-        </Link>
+          </Link>
         ))}
       </ul>
-      <Paginate className=' flex flex-row gap-4 text-lime-50 text-center bg-neutral-900 align-middle justify-center'
+      <Paginate className='w-3/4 mt-6 flex flex-row gap-4 text-lime-50 text-center bg-neutral-900 align-middle justify-center'
         pageCount={Math.ceil(totalItems / page.limit)}
         pageRangeDisplayed={5}
         marginPagesDisplayed={2}
         onPageChange={handlePageClick}
-      />    
-  </div> )  ;
+      />
+    </div> )  ;
 }
 export default Posts;

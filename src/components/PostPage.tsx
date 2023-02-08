@@ -42,26 +42,31 @@ import axios from 'axios';
 
 
   return (
-    <div className=' bg-amber-300 text-center flex flex-col justify-center align-middle'>
-      <ul className=' bg-amber-300 text-cyan-900 w-3/4 self-center gap-3'>
-        <li>
-            <h1 className=' text-xl rounded-3xl'>{"post title: "}{post.title}</h1>
-            <p className=' text-sm'>{"post content: "}{post.body}</p>
-        </li>
-        <li>
-        <Link to={`/users/${post.userId}`}>
-            <h1 className=' self-start text-fuchsia-900'>{"user name and last name: "}{user.name} </h1>
+    <div className='container mx-auto p-8'>
+      <div className='flex flex-col items-center'>
+        <h1 className='text-3xl font-bold mb-4'>Post Title: {post.title}</h1>
+        <p className='text-xl mb-8'>Post Content: {post.body}</p>
+        <Link to={`/users/${post.userId}`} className='bg-teal-500 text-white p-4 rounded-lg hover:bg-teal-600'>
+            View User Profile
         </Link>
-            <h2>{"user email: "}{user.email}</h2>
-        </li>
-        <li>
+      </div>
+      <div className='mt-8'>
+        <h2 className='text-xl font-bold mb-4'>User Information</h2>
+        <div className='flex flex-col items-center'>
+            <p className='text-lg mb-4'>User Name and Last Name: {user.name}</p>
+            <p className='text-lg mb-4'>User Email: {user.email}</p>
+        </div>
+      </div>
+      <div className='mt-8'>
+        <h2 className='text-xl font-bold mb-4'>Comments</h2>
         {loading ?  <p>Loading...</p> : (
           comments.map((comment: any) => (
-            <p className={` text-pink-${Math.floor(Math.random() * 9)*100} p-4 bg-`} key={comment.id}>{`comment: ${comment.id} `}{comment.body}</p>
+            <div className='flex flex-col items-center mt-4' key={comment.id}>
+              <p className='text-lg'>Comment: {comment.body}</p>
+            </div>
             ))
         )}
-        </li>
-      </ul>
+      </div>
     </div>
      )  ;
   
